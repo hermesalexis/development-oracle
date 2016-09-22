@@ -13,7 +13,8 @@
    <nav class="navbar">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><b>El Oráculo del Developer</b></a>
+        <%= link_to '<b>El Oráculo del Developer</b>'.html_safe, questions_path, class:"navbar-brand" %>
+        </a>
       </div>
 
 
@@ -24,8 +25,8 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Ingresar</a></li>
-        <li><a href="#">Registrarse</a></li>
+        <li><%= link_to "Ingresar", new_user_session_path %></li>
+        <li><%= link_to "Registrase", new_user_registration_path %></li>
       </ul>
 
 
