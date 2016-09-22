@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar{
+	background: #E62117;
+	border-radius: 0px;
+}
+
+nav a{
+	color: #FFFFFF;
+}
+
+a.navbar-brand:hover{
+	color: #000000;
+	font-size: 20px;
+}

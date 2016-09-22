@@ -9,7 +9,32 @@
   </head>
    
   <body>
-    
+
+   <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><b>El Oráculo del Developer</b></a>
+      </div>
+
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Buscar">
+        </div>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Ingresar</a></li>
+        <li><a href="#">Registrarse</a></li>
+      </ul>
+
+
+    </div>
+
+   </nav>     
+
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
