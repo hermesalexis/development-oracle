@@ -12,4 +12,6 @@
 
 class Question < ApplicationRecord
   belongs_to :user
+
+  validates :question,:description, presence: true
 end
