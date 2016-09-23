@@ -17,3 +17,24 @@ a.navbar-brand:hover{
 	color: #000000;
 	font-size: 20px;
 }
+
+
+.btn-primary{
+	background-color: #E62117;
+	border-color: #E62117;
+	color:white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active, 
+.open > .dropdown-toggle.btn-primary{
+  background-color: #E62117;
+  border-color: #E62117;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
