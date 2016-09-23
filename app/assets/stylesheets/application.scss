@@ -25,16 +25,16 @@ a.navbar-brand:hover{
 	color:white;
 }
 
+
 .btn-primary:hover,
 .btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active, 
-.open > .dropdown-toggle.btn-primary{
-  background-color: #E62117;
-  border-color: #E62117;
+.btn-primary:active{
+  background-color: #E62117 !important;
+  border-color: #E62117 !important;
 }
 
-.btn-primary:active, .btn-primary.active {
-    background: #007299;
-    box-shadow: none;
+.btn-primary:active{
+  background-color: #FF7A73 !important;
+  border-color: #FF7A73 !important;
 }
+
