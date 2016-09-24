@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924151336) do
+ActiveRecord::Schema.define(version: 20160924154251) do
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string   "question",    limit: 300
@@ -36,6 +46,15 @@ ActiveRecord::Schema.define(version: 20160924151336) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vote_answers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.index ["answer_id"], name: "index_vote_answers_on_answer_id"
+    t.index ["user_id"], name: "index_vote_answers_on_user_id"
   end
 
   create_table "vote_questions", force: :cascade do |t|
