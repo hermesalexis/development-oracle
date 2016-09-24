@@ -24,4 +24,5 @@ class User < ApplicationRecord
     #:recoverable, :trackable, 
 
   has_many :questions
+  has_many :votes
 end
