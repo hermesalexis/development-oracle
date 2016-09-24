@@ -12,9 +12,31 @@
   	</thead>
   	<tbody>
   		<tr>
-  		  <td>Primero</td>
-  		  <td>Segund</td>
-  		  <td>Tercero</td>
+       <% @questions.each do |q| %>
+        <tr>
+          <td>
+            <div class="text-center">
+              <h3><%= q.vote_questions.count %></h3>
+              <small class= "small-description">Votos</small>
+            </div>
+          </td>
+          <td>
+            <div class="text-center small-description">
+              <h3><%= q.answers.count %></h3>
+              <small class= "small-description">Respuestas</small>
+            </div>
+          </td>
+          <td>
+            <div>
+             <h3><%= q.question %></h3>
+             <small class="small-description">
+               <%= "Publicado por #{q.user.email} hace "%>
+               <%= "#{time_ago_in_words(q.created_at)}"%>
+             </small>
+            </div>
+          </td>
+        </tr>
+       <% end %>
   		</tr>
   	</tbody>
   </table>
