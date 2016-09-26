@@ -28,7 +28,7 @@
           </td>
           <td>
             <div>
-             <h3><%= q.question %></h3>
+             <h3><%= link_to q.question, q %></h3>
              <small class="small-description">
                <%= "Publicado por #{q.user.email} hace "%>
                <%= "#{time_ago_in_words(q.created_at)}"%>
