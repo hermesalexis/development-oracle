@@ -1,21 +1,19 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: answers
 #
 #  id          :integer          not null, primary key
-#  question    :string(300)
-#  description :text
+#  answer      :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
+#  question_id :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  question: MyString
-  description: MyText
+  answer: MyText
 
 two:
-  question: MyString
-  description: MyText
+  answer: MyText

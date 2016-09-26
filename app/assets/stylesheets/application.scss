@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "devise.scss";
+@import "questions.scss";
+
+
 
 .navbar{
 	background: #E62117;
@@ -15,3 +17,24 @@ a.navbar-brand:hover{
 	color: #000000;
 	font-size: 20px;
 }
+
+
+.btn-primary{
+	background-color: #E62117;
+	border-color: #E62117;
+	color:white;
+}
+
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active{
+  background-color: #E62117 !important;
+  border-color: #E62117 !important;
+}
+
+.btn-primary:active{
+  background-color: #FF7A73 !important;
+  border-color: #FF7A73 !important;
+}
+

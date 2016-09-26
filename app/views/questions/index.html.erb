@@ -1,5 +1,43 @@
-<% if user_signed_in? %>
-  <h1>Esta logeado como <%= current_user.email %></h1>
-<% else %>
-  <h1>Por favor Registrese</h1>
-<% end %>
+<div class="container">
+  <h2>Preguntas</h2>
+   <% user_signed_in? ? route = new_question_path : route = new_user_session_path %>
+  <%= link_to "Hacer Pregunta",route, class:"btn btn-primary pull-right" %>
+  <table class="table">
+  	<thead>
+  	  <tr>
+  	  	<th></th>
+  	  	<th></th>
+  	  	<th></th>
+  	  </tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+       <% @questions.each do |q| %>
+        <tr>
+          <td>
+            <div class="text-center">
+              <h3><%= q.vote_questions.count %></h3>
+              <small class= "small-description">Votos</small>
+            </div>
+          </td>
+          <td>
+            <div class="text-center small-description">
+              <h3><%= q.answers.count %></h3>
+              <small class= "small-description">Respuestas</small>
+            </div>
+          </td>
+          <td>
+            <div>
+             <h3><%= link_to q.question, q %></h3>
+             <small class="small-description">
+               <%= "Publicado por #{q.user.email} hace "%>
+               <%= "#{time_ago_in_words(q.created_at)}"%>
+             </small>
+            </div>
+          </td>
+        </tr>
+       <% end %>
+  		</tr>
+  	</tbody>
+  </table>
+</div>

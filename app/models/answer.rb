@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: answers
 #
 #  id          :integer          not null, primary key
-#  question    :string(300)
-#  description :text
+#  answer      :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
+#  question_id :integer
 #
 
-require 'test_helper'
-
-class QuestionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Answer < ApplicationRecord
+  has_many :vote_answers
+  belongs_to :user
+  belongs_to :question
 end
