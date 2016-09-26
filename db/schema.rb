@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 20160924154251) do
   create_table "vote_questions", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "Question_id"
-    t.integer  "User_id"
-    t.index ["Question_id"], name: "index_vote_questions_on_Question_id"
-    t.index ["User_id"], name: "index_vote_questions_on_User_id"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.index ["question_id"], name: "index_vote_questions_on_question_id"
+    t.index ["user_id"], name: "index_vote_questions_on_user_id"
   end
 
 end
