@@ -17,4 +17,10 @@ class Question < ApplicationRecord
   has_many :answers
 
   validates :question,:description, presence: true
+
+  def voted_question_by?(user)
+    vote_questions.exists?(user: user)
+  end
+
+
 end
