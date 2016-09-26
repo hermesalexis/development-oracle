@@ -8,17 +8,17 @@ class QuestionsController < ApplicationController
 	  @question = Question.new
 	end
     
-    def create
-      @question = Question.new(question_params)
-      @question.user = current_user
-      if @question.save
-      	redirect_to questions_path
-      else
-        render:new
-      end
+  def create
+    @question = Question.new(question_params)
+    @question.user = current_user
+    if @question.save
+      redirect_to questions_path, notice:"La pregunta fue creada correctamente"
+    else
+      render:new
     end
+  end
     
-    private
+  private
 
     def question_params
       params.required(:question).permit(:question, :description)
