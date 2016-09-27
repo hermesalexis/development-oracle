@@ -1,22 +1,28 @@
 <div class="container">
   <div class="row">
   	 <div class="col-sm-10 col-sm-offset-1">
+
   	   <h2><%= @question.question %></h2>	
+
   	   <% user_signed_in? ? route = question_vote_question_path(@question) : route = new_user_session_path %>
-  	    <div class="row question">
-  	     <div class="col-sm-1 text-center">
+
+  	    <div class="row question clearfix">
+
+  	      <div class="col-sm-1 text-center">
   	       <% if @question.voted_question_by? current_user %>
   	         <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route, method: :delete %>
   	         <h3><%= @question.vote_questions.count %></h3>
   	       <% else %>
   	          <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe,route, method: :post %>
-  	             <h3><%= @question.vote_questions.count %></h3>
+  	         <h3><%= @question.vote_questions.count %></h3>
   	       <% end %>	
   	      </div>
+          
           <div class="col-sm-11 description-question">
             <p><%= @question.description %></p>	
             <hr width="100%">
           </div>
+
   	    </div>
   	    
   	  </div> <!-- end col-sm-10 col-sm-offset-1-->
