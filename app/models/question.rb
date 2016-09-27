@@ -13,8 +13,9 @@
 class Question < ApplicationRecord
   
   belongs_to :user
-  has_many :vote_questions
-  has_many :answers
+  has_many   :vote_questions
+  has_many   :answers
+  has_many   :commentary_questions
 
   validates :question,:description, presence: true
 

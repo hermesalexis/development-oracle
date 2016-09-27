@@ -27,5 +27,6 @@ class User < ApplicationRecord
   has_many :vote_questions
   has_many :vote_answers
   has_many :answers
+  has_many :commentary_questions
   
 end
