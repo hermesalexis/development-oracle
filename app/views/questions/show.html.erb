@@ -17,9 +17,9 @@
   	         <h3><%= @question.vote_questions.count %></h3>
   	       <% end %>	
   	      </div>
-          
+
           <div class="col-sm-11 description-question">
-            <p><%= @question.description %></p>	
+             <%= markdown(@question.description).html_safe %>
             <hr width="100%">
           </div>
 
