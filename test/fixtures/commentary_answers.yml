@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: commentary_answers
+#
+#  id         :integer          not null, primary key
+#  commentary :text
+#  user_id    :integer
+#  answer_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commentary: MyText
+  user: one
+  answer: one
+
+two:
+  commentary: MyText
+  user: two
+  answer: two
