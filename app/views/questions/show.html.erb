@@ -19,12 +19,40 @@
   	      </div>
 
           <div class="col-sm-11 description-question">
-             <p> <%= markdown(@question.description) %></p>
+            <p> <%= markdown(@question.description) %></p>
             <hr width="100%">
+             <% @question.commentary_questions.each do |c| %>
+
+               <div class="panel panel-default">
+                 
+                 <div class="panel-heading">
+                   <strong><%= "#{c.user.email}" %></strong>
+                   <span class="text-muted"><%= "Comentó hace #{time_ago_in_words(c.created_at)}"%></span>
+                 </div>
+                 
+                 <div class="panel-body">
+                   <%= markdown(c.commentary) %>
+                 </div>
+
+               </div>
+             <% end %>
+            <hr width="100%">
+
+            <% if signed_in? %>
+              <%= form_for [@question, @question.commentary_questions.new] do |c| %>
+                <div class="form-group">
+                  <%= c.text_area :commentary, class:"form-control", placeholder: "Agregar un Comentario..." %>
+                </div>
+                <div class="form-group">
+                  <%= c.submit "Comentar", class: "btn btn-primary pull-right"%>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
   	    </div>
   	    
   	  </div> <!-- end col-sm-10 col-sm-offset-1-->
+      
   </div>
 </div>
