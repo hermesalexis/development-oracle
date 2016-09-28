@@ -63,6 +63,26 @@
       <% if @question.answers.count == 0 %>
         <span class="text-muted">Si conoces a alguien que conozca la respuesta, por favor avísale, que la necesitamos con urgencia</span>
       <% end %>
+      <% if user_signed_in? %>
+        <h3>Tu Respuesta</h3>
+        <% if @question.answers.errors.any? %>
+          <div class="alert alert-danger">
+            <ul>
+              <% @question.answers.errors.full_message.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= form_for [@question, @question.answers.new] do |a| %>
+          <div class="form-group">
+            <%= a.text_area :answer, rows:"8", class:"form-control", placeholder:"Respuesta..."%>
+          </div>
+          <div class="form-group">
+            <%= a.submit "Responder", class:"btn btn-primary pull-right" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

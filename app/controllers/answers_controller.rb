@@ -8,6 +8,6 @@ class AnswersController < ApplicationController
   
   private
   def answer_params
-  	params.required(:answer).permit(:answer).merge(:current_user)
+  	params.required(:answer).permit(:answer).merge(user:current_user)
   end
 end
