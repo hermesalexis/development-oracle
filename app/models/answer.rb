@@ -11,8 +11,11 @@
 #
 
 class Answer < ApplicationRecord
+  
   has_many :vote_answers
   has_many :commentary_answers
   belongs_to :user
   belongs_to :question
+
+  validate :answer,:answer, presence:true 
 end
