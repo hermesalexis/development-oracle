@@ -6,19 +6,18 @@
 
   	   <% route = validate_sign_in(1, @question) %>
 
-  	    <div class="row question clearfix">
+  	    <div class="row sub-container clearfix">
 
   	      <div class="col-sm-1 text-center">
   	       <% if @question.voted_question_by? current_user %>
   	         <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route, method: :delete %>
-  	         <h3><%= @question.vote_questions.count %></h3>
   	       <% else %>
   	          <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe,route, method: :post %>
-  	         <h3><%= @question.vote_questions.count %></h3>
   	       <% end %>	
+           <h3><%= @question.vote_questions.count %></h3>
   	      </div>
 
-          <div class="col-sm-11 description-question">
+          <div class="col-sm-11 description-sub-container">
             <p> <%= markdown(@question.description) %></p>
             <hr width="100%">
              <% @question.commentary_questions.each do |c| %>
@@ -57,14 +56,44 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-11 col-sm-offset-1">
       <hr width="100%">
       <h3><%= "#{@question.answers.count} Respuesta(s)"%></h3>
 
       <% if @question.answers.count == 0 %>
         <span class="text-muted">Si conoces a alguien que conozca la respuesta, por favor avísale, que la necesitamos con urgencia</span>
       <% end %>
+      <hr width="100%">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+      <% @question.answers.each do |a| %>
 
+        <div class="row sub-container clearfix">
+          <div class="col-sm-1 text-center">
+           <% if a.voted_answer_by? current_user %>
+             <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, question_vote_answer_path(@question, answer_id:a), method: :delete %>
+           <% else %>
+              <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe, question_vote_answer_path(@question, answer_id:a), method: :post %>
+           <% end %>
+            <h3><%= a.vote_answers.count %></h3>
+          </div>
+
+          <div class="col-sm-11 description-sub-container ">
+            <p><%= markdown(a.answer) %></p>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+    
+ 
+
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
       <% if user_signed_in? %>
         <h3>Tu Respuesta</h3>
 
@@ -86,8 +115,8 @@
             <%= a.submit "Responder", class:"btn btn-primary pull-right" %>
           </div>
         <% end %>
-
       <% end %>
     </div>
   </div>
+
 </div>

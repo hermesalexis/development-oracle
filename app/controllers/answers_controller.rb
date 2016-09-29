@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
   	 @answer.question = @question
 
     if @answer.save
-     redirect_to question_path(question), notice:"La respuesta ha sido creada correctamente"  
+     redirect_to question_path(@question), notice:"La respuesta ha sido creada correctamente"  
     else
      render "questions/show"
     end
