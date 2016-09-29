@@ -3,19 +3,19 @@ small.small-description{
 }
 
 
-div.question{
+div.sub-container {
   margin-top: 40px;
 }
 
-div.question a{
-  font-size: 30px;
+div.sub-container  a{
+  font-size: 25px;
 }
 
-div.question h3 {
+div.sub-container  h3 {
    margin-top: 0;
 }
 
-div.description-question{
+div.description-sub-container {
    font-size: 16px;
 }
 
@@ -27,7 +27,7 @@ div.description-question{
 }
 
 hr{
- color:#AFB4BD;	
+ border-color:#E1E1E1;	
 }
 
 div.panel-heading, div.panel-body{

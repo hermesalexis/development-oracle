@@ -1,4 +1,5 @@
 class CommentaryQuestionsController < ApplicationController
+	
 	def create
       question = Question.find(params[:question_id])
       question.commentary_questions.create(commentary_question_params)
