@@ -8,9 +8,9 @@
 
   	      <div class="col-sm-1 text-center">
   	       <% if @question.voted_question_by? current_user %>
-  	         <%= render 'link', method: :delete, question:true  %>
+  	         <%= render 'questions/link', method: :delete, question:true  %>
   	       <% else %>
-  	          <%= render 'link', method: :post, question:true %>
+  	          <%= render 'questions/link', method: :post, question:true %>
   	       <% end %>
            <h3><%= @question.vote_questions.count %></h3>
   	      </div>
@@ -72,16 +72,18 @@
         <div class="row sub-container clearfix">
           <div class="col-sm-1 text-center">
            <% if a.voted_answer_by? current_user %>
-             <%= render 'link', method: :delete, answer:a.id, question:false %>
+             <%= render 'questions/link', method: :delete, answer:a.id, question:false %>
            <% else %>
-             <%= render 'link', method: :post, answer:a.id, question: false %>
+             <%= render 'questions/link', method: :post, answer:a.id, question: false %>
            <% end %>
            <h3><%= a.vote_answers.count %></h3>
           </div>
 
           <div class="col-sm-11 description-sub-container ">
             <p><%= markdown(a.answer) %></p>
+            <hr width="100%">
           </div>
+
         </div>
 
       <% end %>
