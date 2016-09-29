@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Preguntas</h2>
-   <% user_signed_in? ? route = new_question_path : route = new_user_session_path %>
+   <% route = validate_sign_in(2) %>
   <%= link_to "Hacer Pregunta",route, class:"btn btn-primary pull-right" %>
   <table class="table">
   	<thead>

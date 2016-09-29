@@ -1,9 +1,17 @@
 class AnswersController < ApplicationController
-  
+
+
   def create
-  	question = Question.find(params[:question_id])
-  	question.answers.create(answer_params)
-  	redirect_to question_path(question)
+  	 @answer = Answer.new(answer_params)
+  	 @question = Question.find(params[:question_id])
+  	 @answer.question = @question
+
+    if @answer.save
+     redirect_to question_path(question), notice:"La respuesta ha sido creada correctamente"  
+    else
+     render "questions/show"
+    end
+
   end
   
   private
