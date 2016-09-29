@@ -4,16 +4,14 @@
 
   	   <h2><%= @question.question %></h2>	
 
-  	   <% route = validate_sign_in(1, @question) %>
-
   	    <div class="row sub-container clearfix">
 
   	      <div class="col-sm-1 text-center">
   	       <% if @question.voted_question_by? current_user %>
-  	         <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route, method: :delete %>
+  	         <%= render 'link', method: :delete, question:true  %>
   	       <% else %>
-  	          <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe,route, method: :post %>
-  	       <% end %>	
+  	          <%= render 'link', method: :post, question:true %>
+  	       <% end %>
            <h3><%= @question.vote_questions.count %></h3>
   	      </div>
 
@@ -74,11 +72,11 @@
         <div class="row sub-container clearfix">
           <div class="col-sm-1 text-center">
            <% if a.voted_answer_by? current_user %>
-             <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, question_vote_answer_path(@question, answer_id:a), method: :delete %>
+             <%= render 'link_answer', method: :delete, answer:a.id, question:false %>
            <% else %>
-              <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe, question_vote_answer_path(@question, answer_id:a), method: :post %>
+             <%= render 'link_answer', method: :post, answer:a.id, question: false %>
            <% end %>
-            <h3><%= a.vote_answers.count %></h3>
+           <h3><%= a.vote_answers.count %></h3>
           </div>
 
           <div class="col-sm-11 description-sub-container ">

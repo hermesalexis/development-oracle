@@ -1,11 +1,22 @@
 module QuestionsHelper
 
- def validate_sign_in option, *question
-    if option == 1 
- 	 user_signed_in? ? route = question_vote_question_path(question) : route = new_user_session_path 
-    elsif option == 2
-     user_signed_in? ? route = new_question_path : route = new_user_session_path 
-    end
+ def route_question(question = nil, answer = nil)
+
+   if user_signed_in?
+
+      if !question.nil? && !answer.nil?
+         question_vote_answer_path(question, answer_id:answer)
+      elsif !question.nil?
+         question_vote_question_path(question)
+      else
+         new_question_path
+      end
+
+   else
+  	  new_user_session_path
+   end
+
  end
+
 
 end

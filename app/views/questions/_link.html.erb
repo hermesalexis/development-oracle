@@ -1,0 +1,6 @@
+<% if local_assigns[:question]%>
+   <%= link_to link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route_question(@question), method:method %>
+<% else %>
+  <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route_question(@question, local_assigns[:answer]), method: method %> 
+<% end %>
+
