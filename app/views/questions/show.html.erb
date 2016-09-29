@@ -72,9 +72,9 @@
         <div class="row sub-container clearfix">
           <div class="col-sm-1 text-center">
            <% if a.voted_answer_by? current_user %>
-             <%= render 'link_answer', method: :delete, answer:a.id, question:false %>
+             <%= render 'link', method: :delete, answer:a.id, question:false %>
            <% else %>
-             <%= render 'link_answer', method: :post, answer:a.id, question: false %>
+             <%= render 'link', method: :post, answer:a.id, question: false %>
            <% end %>
            <h3><%= a.vote_answers.count %></h3>
           </div>
