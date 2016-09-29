@@ -6,8 +6,11 @@ class VoteAnswersController < ApplicationController
 	   redirect_to question_path(question)
 	end
     
-    def delete
-    	
+    def destroy
+    	answer = Answer.find(params[:answer_id])
+    	question = Question.find(params[:question_id])
+    	answer.vote_answers.where(user:current_user).take.try(:destroy)
+    	redirect_to question_path(question)
     end
 
 end
