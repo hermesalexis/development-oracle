@@ -1,4 +1,5 @@
 class CommentaryQuestionsController < ApplicationController
+   before_action :authenticate_user!
 
 	def create
 	  @commentary_question = CommentaryQuestion.new(commentary_question_params)
