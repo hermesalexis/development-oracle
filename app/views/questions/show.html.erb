@@ -34,17 +34,7 @@
                </div>
              <% end %>
             <hr width="100%">
-
-              <% if @commentary_question.try(:errors).try(:any?) %>
-               <div class="alert alert-danger">
-                 <ul>
-                   <% @commentary_question.errors.full_messages.each do |msg| %>
-                     <li><%= msg %></li>
-                   <% end %>
-                 </ul>
-               </div>
-              <% end %>
-
+              <%= render partial:"questions/validation", locals:{object:@commentary_question} %>
               <%= form_for [@question, CommentaryQuestion.new] do |c| %>
                 <div class="form-group">
                   <%= c.text_area :commentary, class:"form-control", placeholder: "Agregar un Comentario..." %>
@@ -103,23 +93,18 @@
     <div class="col-sm-11 col-sm-offset-1">
         <h3>Tu Respuesta</h3>
 
-        <% if @answer.try(:errors).try(:any?) %>
-         <div class="alert alert-danger">
-           <ul>
-             <% @answer.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-             <% end %>
-           </ul>
-         </div>
-        <% end %>
-
+        <%= render partial:"questions/validation", locals:{object:@answer} %>
+        
         <%= form_for [@question, Answer.new] do |a| %>
+          
           <div class="form-group">
             <%= a.text_area :answer, rows:"8", class:"form-control", placeholder:"Respuesta..."%>
           </div>
+          
           <div class="form-group">
             <%= a.submit "Responder", class:"btn btn-primary pull-right" %>
           </div>
+
         <% end %>
         
     </div>
