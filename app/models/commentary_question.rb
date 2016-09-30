@@ -13,4 +13,7 @@
 class CommentaryQuestion < ApplicationRecord
   belongs_to :user
   belongs_to :question
+
+  validates :commentary, 
+             presence:true 
 end

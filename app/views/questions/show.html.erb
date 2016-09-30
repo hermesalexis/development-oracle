@@ -36,7 +36,18 @@
             <hr width="100%">
 
             <% if signed_in? %>
-              <%= form_for [@question, @question.commentary_questions.new] do |c| %>
+
+              <% if @commentary_question.try(:errors).try(:any?) %>
+               <div class="alert alert-danger">
+                 <ul>
+                   <% @commentary_question.errors.full_messages.each do |msg| %>
+                     <li><%= msg %></li>
+                   <% end %>
+                 </ul>
+               </div>
+              <% end %>
+
+              <%= form_for [@question, CommentaryQuestion.new] do |c| %>
                 <div class="form-group">
                   <%= c.text_area :commentary, class:"form-control", placeholder: "Agregar un Comentario..." %>
                 </div>
@@ -95,7 +106,7 @@
       <% if user_signed_in? %>
         <h3>Tu Respuesta</h3>
 
-        <% if @answer.errors.any? %>
+        <% if @answer.try(:errors).try(:any?) %>
          <div class="alert alert-danger">
            <ul>
              <% @answer.errors.full_messages.each do |msg| %>
@@ -105,7 +116,7 @@
          </div>
         <% end %>
 
-        <%= form_for [@question, @answer] do |a| %>
+        <%= form_for [@question, Answer.new] do |a| %>
           <div class="form-group">
             <%= a.text_area :answer, rows:"8", class:"form-control", placeholder:"Respuesta..."%>
           </div>
