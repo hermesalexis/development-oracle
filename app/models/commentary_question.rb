@@ -15,5 +15,5 @@ class CommentaryQuestion < ApplicationRecord
   belongs_to :question
 
   validates :commentary, 
-             presence:true 
+             presence: true 
 end
