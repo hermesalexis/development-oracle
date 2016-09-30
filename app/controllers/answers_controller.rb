@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+  before_action :authenticate_user!
 
   def create
   	 @answer = Answer.new(answer_params)
@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     if @answer.save
      redirect_to question_path(@question), notice:"La respuesta ha sido creada correctamente"  
     else
-     render "questions/show"
+     render "questions/show/"
     end
 
   end

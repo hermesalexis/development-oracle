@@ -17,7 +17,8 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
 
-  validates :answer,:answer, presence:true 
+  validates :answer, 
+             presence:true 
 
   def voted_answer_by?(user)
     vote_answers.exists?(user: user)

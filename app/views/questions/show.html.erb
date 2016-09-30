@@ -8,9 +8,9 @@
 
   	      <div class="col-sm-1 text-center">
   	       <% if @question.voted_question_by? current_user %>
-  	         <%= render 'link', method: :delete, question:true  %>
+  	         <%= render 'questions/link', method: :delete, question:true  %>
   	       <% else %>
-  	          <%= render 'link', method: :post, question:true %>
+  	          <%= render 'questions/link', method: :post, question:true %>
   	       <% end %>
            <h3><%= @question.vote_questions.count %></h3>
   	      </div>
@@ -34,9 +34,8 @@
                </div>
              <% end %>
             <hr width="100%">
-
-            <% if signed_in? %>
-              <%= form_for [@question, @question.commentary_questions.new] do |c| %>
+              <%= render partial:"questions/validation", locals:{object:@commentary_question} %>
+              <%= form_for [@question, CommentaryQuestion.new] do |c| %>
                 <div class="form-group">
                   <%= c.text_area :commentary, class:"form-control", placeholder: "Agregar un Comentario..." %>
                 </div>
@@ -44,7 +43,7 @@
                   <%= c.submit "Comentar", class: "btn btn-primary pull-right"%>
                 </div>
               <% end %>
-            <% end %>
+
           </div>
 
   	    </div>
@@ -72,16 +71,18 @@
         <div class="row sub-container clearfix">
           <div class="col-sm-1 text-center">
            <% if a.voted_answer_by? current_user %>
-             <%= render 'link', method: :delete, answer:a.id, question:false %>
+             <%= render 'questions/link', method: :delete, answer:a.id, question:false %>
            <% else %>
-             <%= render 'link', method: :post, answer:a.id, question: false %>
+             <%= render 'questions/link', method: :post, answer:a.id, question: false %>
            <% end %>
            <h3><%= a.vote_answers.count %></h3>
           </div>
 
           <div class="col-sm-11 description-sub-container ">
             <p><%= markdown(a.answer) %></p>
+            <hr width="100%">
           </div>
+
         </div>
 
       <% end %>
@@ -90,28 +91,22 @@
 
   <div class="row">
     <div class="col-sm-11 col-sm-offset-1">
-      <% if user_signed_in? %>
         <h3>Tu Respuesta</h3>
 
-        <% if @answer.errors.any? %>
-         <div class="alert alert-danger">
-           <ul>
-             <% @answer.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-             <% end %>
-           </ul>
-         </div>
-        <% end %>
-
-        <%= form_for [@question, @answer] do |a| %>
+        <%= render partial:"questions/validation", locals:{object:@answer} %>
+        
+        <%= form_for [@question, Answer.new] do |a| %>
+          
           <div class="form-group">
             <%= a.text_area :answer, rows:"8", class:"form-control", placeholder:"Respuesta..."%>
           </div>
+          
           <div class="form-group">
             <%= a.submit "Responder", class:"btn btn-primary pull-right" %>
           </div>
+
         <% end %>
-      <% end %>
+        
     </div>
   </div>
 

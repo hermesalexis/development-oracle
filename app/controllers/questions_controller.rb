@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
-
-	def index
+  before_action :authenticate_user!, only:[:new, :create]
+	
+  def index
 		@questions = Question.all.order('created_at DESC')
 	end
 	
@@ -20,7 +21,6 @@ class QuestionsController < ApplicationController
   
   def show
     @question = Question.find(params[:id])
-    @answer = Answer.new
   end
 
   private
