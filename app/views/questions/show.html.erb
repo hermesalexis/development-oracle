@@ -23,7 +23,7 @@
                <div class="panel panel-default">
                  
                  <div class="panel-heading">
-                   <strong><%= "#{c.user.email}" %></strong>
+                   <strong><%= c.user.email %></strong>
                    <span class="text-muted"><%= "Comentó hace #{time_ago_in_words(c.created_at)}"%></span>
                  </div>
                  
@@ -66,6 +66,7 @@
   
   <div class="row">
     <div class="col-sm-11 col-sm-offset-1">
+       <%= render partial:"questions/validation", locals:{object:@commentary_answer} %>
       <% @question.answers.each do |a| %>
 
         <div class="row sub-container clearfix">
@@ -81,6 +82,35 @@
           <div class="col-sm-11 description-sub-container ">
             <p><%= markdown(a.answer) %></p>
             <hr width="100%">
+            
+            <% a.commentary_answers.each do |c| %>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <strong><%= c.user.email %></strong>
+                  <span class="text-muted"><%= "Comentó hace #{time_ago_in_words(c.created_at)}"%></span>
+                </div>
+                <div class="panel-body">
+                  <%= markdown(c.commentary) %>
+                </div>
+              </div>
+            <% end %>
+            
+
+            <%= form_for [@question, CommentaryAnswer.new] do |c| %>
+
+              <%= c.hidden_field :answer_id, value: a.id %>
+
+              <div class="form-group">
+              <%= c.text_area :commentary, rows:"8", class:"form-control", placeholder:"comentario" %>
+              </div>
+
+              <div class="form-group">
+                <%= c.submit "Comentar", class: "btn btn-primary pull-right"%>
+              </div>
+
+            <% end %>
+
           </div>
 
         </div>
