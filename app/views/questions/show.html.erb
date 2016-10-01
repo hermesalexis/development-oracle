@@ -81,6 +81,19 @@
           <div class="col-sm-11 description-sub-container ">
             <p><%= markdown(a.answer) %></p>
             <hr width="100%">
+
+            <%= form_for [@question, CommentaryAnswer.new, a] do |c| %>
+              <div class="form-group">
+              
+              <%= c.text_area :commentary, rows:"8", class:"form-control", placeholder:"comentario" %>
+              </div>
+
+              <div class="form-group">
+                <%= c.submit "Comentar", class: "btn btn-primary pull-right"%>
+              </div>
+
+            <% end %>
+
           </div>
 
         </div>
