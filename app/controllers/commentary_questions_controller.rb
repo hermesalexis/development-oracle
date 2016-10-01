@@ -7,7 +7,7 @@ class CommentaryQuestionsController < ApplicationController
 	  @commentary_question.question = @question
 
 	  if @commentary_question.save
-	   redirect_to question_path(@question), notice:"El comentario ha sido creada correctamente"  
+	   redirect_to question_path(@question), notice:"El comentario ha sido creado correctamente"  
 	  else
 	   render "questions/show"
 	  end

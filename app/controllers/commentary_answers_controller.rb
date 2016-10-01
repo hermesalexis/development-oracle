@@ -6,7 +6,7 @@ class CommentaryAnswersController < ApplicationController
   @question = Question.find(params[:question_id])
 
   if @commentary_answer.save
-   	redirect_to question_path(@question), notice:"El comentario ha sido creada correctamente"  
+   	redirect_to question_path(@question), notice:"El comentario ha sido creado correctamente"  
   else
   	render "questions/show"
   end
