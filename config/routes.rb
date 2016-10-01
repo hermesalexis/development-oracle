@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'questions#index'
   devise_for :users
 
-  resources :questions do 
+  resources :questions, only:[:index, :new, :create, :show] do 
 
   	resource  :vote_question, only:[:create, :destroy]
   	resources :commentary_questions, only:[:create]

@@ -1,0 +1,20 @@
+es:
+    activerecord:
+      attributes:
+        question:
+          question: "La pregunta"
+          description: "La descripción"
+        answer:
+          answer: "La respuesta"
+        commentary_question:
+          commentary: "El comentario"
+        commentary_answer:
+          commentary: "El comentario"
+
+    devise:
+      registrations:
+        signed_up: "Te has registrado correctamente"
+      sessions:
+        signed_out: "Has cerrado tu sesión"
+        signed_in: "Es hora de Ayudar a tu comunidad"
+        

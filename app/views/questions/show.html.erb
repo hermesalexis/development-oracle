@@ -80,6 +80,10 @@
           </div>
 
           <div class="col-sm-11 description-sub-container ">
+            <div class="responder">
+             <strong><%= a.user.email %></strong>
+             <span class=" text-muted"><%= "Contestó hace #{time_ago_in_words(a.created_at)}"%></span>
+            </div>
             <p><%= markdown(a.answer) %></p>
             <hr width="100%">
             
