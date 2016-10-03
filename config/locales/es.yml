@@ -21,4 +21,4 @@ es:
       failure:
         invalid: "El usuario y/o contraseñas son inválidos"
         unauthenticated: "Necesitas autenticarte o registrarte antes de continuar"
-        
+        not_found_in_database: "El usuario no se encuentra registrado"
