@@ -18,11 +18,13 @@
       </div>
 
 
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar">
-        </div>
-      </form>
+       <%= form_tag questions_path, method: :get, class:"navbar-form navbar-right" do %>
+
+         <div class="form-group">
+           <%= text_field_tag :search, params[:search], class:"form-control", placeholder:"Buscar" %>
+         </div>
+         
+       <% end %>
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

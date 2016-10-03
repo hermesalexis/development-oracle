@@ -2,7 +2,12 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create]
 	
   def index
-		@questions = Question.all.order('created_at DESC')
+    @questions = Question.all.order('created_at DESC')
+    
+    if params[:search].present?
+      @questions = @questions.where("question LIKE ?", "%#{params[:search]}%").order('created_at')
+    end
+		
 	end
 	
 	def new
