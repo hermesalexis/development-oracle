@@ -3,9 +3,11 @@
   <div class="modal-content">
     <h2 class="text-center">Ingresar</h2>
     <div class="modal-body">
+      <%= devise_error_messages! %>
+       <% flash.each do |key, value| %>
+         <div class="flash <%= key %> alert alert-danger"><%= value %></div>
+       <% end %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-       <%= devise_error_messages! %>
 
         <div class="form-group">
           <%= f.label :email %><br />

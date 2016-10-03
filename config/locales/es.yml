@@ -17,4 +17,8 @@ es:
       sessions:
         signed_out: "Has cerrado tu sesión"
         signed_in: "Es hora de Ayudar a tu comunidad"
+
+      failure:
+        invalid: "El usuario y/o contraseñas son inválidos"
+        unauthenticated: "Necesitas autenticarte o registrarte antes de continuar"
         
