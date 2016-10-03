@@ -7,11 +7,13 @@
   	    <div class="row sub-container clearfix">
 
   	      <div class="col-sm-1 text-center">
+
   	       <% if @question.voted_question_by? current_user %>
-  	         <%= render 'questions/link', method: :delete, question:true  %>
+  	         <%= render 'questions/link', option: "q", state:false %>
   	       <% else %>
-  	          <%= render 'questions/link', method: :post, question:true %>
+  	          <%= render 'questions/link', option: "q", state:true %>
   	       <% end %>
+
            <h3><%= @question.vote_questions.count %></h3>
   	      </div>
 
@@ -72,9 +74,9 @@
         <div class="row sub-container clearfix">
           <div class="col-sm-1 text-center">
            <% if a.voted_answer_by? current_user %>
-             <%= render 'questions/link', method: :delete, answer:a.id, question:false %>
+             <%= render 'questions/link', method: :delete, answer:a.id, option: "a", state:false %>
            <% else %>
-             <%= render 'questions/link', method: :post, answer:a.id, question: false %>
+             <%= render 'questions/link', method: :post, answer:a.id, option: "a", state:true %>
            <% end %>
            <h3><%= a.vote_answers.count %></h3>
           </div>

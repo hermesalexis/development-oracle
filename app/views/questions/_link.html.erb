@@ -1,6 +1,17 @@
-<% if local_assigns[:question]%>
-   <%= link_to link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route_question(@question), method:method %>
-<% else %>
-  <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route_question(@question, local_assigns[:answer]), method: method %> 
+
+<% if local_assigns[:option] == "q" %>
+   <% route = route_question(@question) %>
+  <% if local_assigns[:state] %>
+     <%= link_to link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe, route, method: :post %>
+  <% else %>
+    <%= link_to link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route, method: :delete%>
+  <% end %>
+<% elsif  local_assigns[:option] == "a" %>
+  <% route = route_question(@question, local_assigns[:answer]) %>
+  <% if local_assigns[:state] %>
+    <%= link_to '<span class="fa fa-thumbs-up hand" aria-hidden="true"></span>'.html_safe, route, method: method %> 
+  <% else %>
+    <%= link_to '<span class="fa fa-thumbs-up hand-color" aria-hidden="true"></span>'.html_safe, route, method: method %> 
+  <% end %>
 <% end %>
 
